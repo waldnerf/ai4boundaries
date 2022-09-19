@@ -61,7 +61,7 @@ def download_ai4boundaries(dir):
 
                     # calling it self
                     scrape(subsite)
-            if href.endswith("tif"):
+            if href.endswith("tif") | href.endswith("nc"):
                 url_fn_ = site + href
                 url_fns.append(url_fn_)
     print('Scraping data')
