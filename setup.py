@@ -16,6 +16,6 @@ setuptools.setup(
         "Bug Tracker": "https://github.com/waldnerf/ai4boundaries/issues"
     },
     license='MIT',
-    packages=['waldnerf'],
+    packages=['ai4boundaries'],
     install_requires=['requests', 'urllib', 'bs4', 'pathlib', 'tqdm'],
 )
