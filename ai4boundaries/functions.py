@@ -32,6 +32,7 @@ def download_ai4boundaries(dir):
     :param dir:
 
     """
+    url = 'http://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/DRLL/AI4BOUNDARIES/'
     urls = []
     url_fns = []
 
