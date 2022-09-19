@@ -1,8 +1,5 @@
 import setuptools
 
-#with open("README.md", "r", encoding="utf-8") as fh:
-#    long_description = fh.read()
-
 setuptools.setup(
     name='ai4boundaries',
     version='0.0.1',
@@ -17,5 +14,5 @@ setuptools.setup(
     },
     license='MIT',
     packages=['ai4boundaries'],
-    install_requires=['requests', 'urllib', 'bs4', 'pathlib', 'tqdm'],
+    install_requires=['requests', 'bs4', 'pathlib', 'tqdm'],
 )
