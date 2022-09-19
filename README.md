@@ -4,6 +4,7 @@ AI4boundaries is a Python package that facilitates download of the AI4boundaries
 
 Check out [the paper](https://essd.copernicus.org/preprints/essd-2022-298/)
 
+d'Andrimont, R., Claverie, M., Kempeneers, P., Muraro, D., Yordanov, M., Peressutti, D., Batič, M., and Waldner, F.: AI4Boundaries: an open AI-ready dataset to map field boundaries with Sentinel-2 and aerial photography, Earth Syst. Sci. Data Discuss. [preprint], https://doi.org/10.5194/essd-2022-298, in review, 2022.
 
 ![Data sample](figures/example.png)
 
