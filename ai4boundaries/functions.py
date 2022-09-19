@@ -28,8 +28,8 @@ def download_file(url, dst_path):
 
 def download_ai4boundaries(dir):
     """
-
-    :param dir:
+    Download AI4boundaries data set
+    :param dir: Path to directory where to save the data
 
     """
     url = 'http://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/DRLL/AI4BOUNDARIES/'
@@ -64,9 +64,10 @@ def download_ai4boundaries(dir):
             if href.endswith("tif"):
                 url_fn_ = site + href
                 url_fns.append(url_fn_)
-
+    print('Scraping data')
     scrape(url)
 
+    print('Creating folder architecture')
     if dir.endswith('/'):
         subdirs = [i.replace(url, dir) for i in urls if not i.endswith('DRLL/')]
     else:
@@ -77,6 +78,7 @@ def download_ai4boundaries(dir):
     for subdir in subdirs:
         Path(subdir).mkdir(parents=True, exist_ok=True)
 
+    print('Downloading data')
     for url_fn in tqdm(url_fns):
         if dir.endswith('/'):
             fn = url_fn.replace(url, dir)
@@ -86,6 +88,11 @@ def download_ai4boundaries(dir):
         download_file(url_fn, fn)
 
     print('Download finished!')
+    print('Cite the data set:')
+    print('d\'Andrimont, R., Claverie, M., Kempeneers, P., Muraro, D., Yordanov, M., Peressutti, D., Batič, M., '
+          'and Waldner, F.: AI4Boundaries: an open AI-ready dataset to map field boundaries with Sentinel-2 and aerial '
+          'photography, Earth Syst. Sci. Data Discuss. [preprint], '
+          'https://doi.org/10.5194/essd-2022-298, in review, 2022.')
 
 
 if __name__ == '__main__':
