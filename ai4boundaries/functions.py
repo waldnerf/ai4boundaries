@@ -4,6 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 from pathlib import Path
 from tqdm import tqdm
+import time
 
 # URL of data set
 url = 'http://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/DRLL/AI4BOUNDARIES/'
@@ -64,6 +65,7 @@ def download_ai4boundaries(dir):
             if href.endswith("tif") | href.endswith("nc"):
                 url_fn_ = site + href
                 url_fns.append(url_fn_)
+
     print('Scraping data')
     scrape(url)
 
@@ -78,14 +80,29 @@ def download_ai4boundaries(dir):
     for subdir in subdirs:
         Path(subdir).mkdir(parents=True, exist_ok=True)
 
+    failed_fns = []
     print('Downloading data')
     for url_fn in tqdm(url_fns):
         if dir.endswith('/'):
             fn = url_fn.replace(url, dir)
         else:
             fn = url_fn.replace(url, dir + '/')
+        try:
+            download_file(url_fn, fn)
+        except:
+            time.sleep(20)
+            failed_fns = url_fn
 
-        download_file(url_fn, fn)
+    # Reprocessing failed downloads
+    for url_fn in tqdm(failed_fns):
+        if dir.endswith('/'):
+            fn = url_fn.replace(url, dir)
+        else:
+            fn = url_fn.replace(url, dir + '/')
+        try:
+            download_file(url_fn, fn)
+        except:
+            continue
 
     print('Download finished!')
     print('Cite the data set:')
@@ -96,5 +113,5 @@ def download_ai4boundaries(dir):
 
 
 if __name__ == '__main__':
-    out_dir = 'C:/Users/franc/Downloads/ai4boundaries'
+    out_dir = r'C:/Users/franc/Downloads/ai4boundaries'
     download_ai4boundaries(out_dir)
